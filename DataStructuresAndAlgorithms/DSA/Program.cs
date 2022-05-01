@@ -48,5 +48,7 @@ list.ReserverPrint();
 Console.WriteLine("\n\nBubble Sort:");
 Bubblesort.ModifiedAlgorithm(Bubblesort.arr);
 
+Console.WriteLine("\n\nSelection Sort:");
+Selectionsort.Algorithm(Selectionsort.arr);
 
 Console.ReadLine();
