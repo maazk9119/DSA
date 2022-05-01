@@ -51,4 +51,7 @@ Bubblesort.ModifiedAlgorithm(Bubblesort.arr);
 Console.WriteLine("\n\nSelection Sort:");
 Selectionsort.Algorithm(Selectionsort.arr);
 
+Console.WriteLine("\n\nInsertion Sort:");
+Insertionsort.Algorithm(Insertionsort.arr);
+
 Console.ReadLine();
