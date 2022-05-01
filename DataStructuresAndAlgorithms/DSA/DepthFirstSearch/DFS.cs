@@ -32,7 +32,7 @@ namespace DSA.DepthFirstSearch
 
                 if(IsValid(visited, currRow, currCol))
                 {
-                    Console.WriteLine("{0} ",matrix[currRow, currCol]); //print traverse
+                    Console.Write("{0} ",matrix[currRow, currCol]); //print traverse
 
                     visited[currRow, currCol] = true;
                     for (int k = 0; k < 4; k++) //for always 4 neighbours
