@@ -2,6 +2,7 @@
 using DSA.BreadthFirstSearch;
 using DSA.DepthFirstSearch;
 using DSA.KMP;
+using DSA.NaiveAlgo;
 
 Console.WriteLine("Hello, World!");
 
@@ -10,11 +11,14 @@ Console.WriteLine("DFS Traverse 2D array");
 DFS.Algorithm(DFS.matrix);
 
 
-Console.WriteLine("\nBFS Traverse 2D array");
+Console.WriteLine("\n\nBFS Traverse 2D array");
 BFS.Alogrithm(BFS.matrix);
 
 
-Console.WriteLine("\nKMP Algorithm:");
+Console.WriteLine("\n\nKMP Algorithm:");
 KMP.Algorithm(KMP.Text, KMP.Pattern);
 
+
+Console.WriteLine("\nNaive Algorithm:");
+Naive.Alogrithm(Naive.Text, Naive.Pattern);
 Console.ReadLine();
