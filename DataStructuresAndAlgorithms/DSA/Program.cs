@@ -4,6 +4,7 @@ using DSA.DepthFirstSearch;
 using DSA.KMP;
 using DSA.LinkedList;
 using DSA.NaiveAlgo;
+using DSA.SortingAlgos;
 
 Console.WriteLine("Hello, World!");
 
@@ -42,5 +43,10 @@ list.Print();
 Console.WriteLine();
 list.FindMiddleElement();
 list.ReserverPrint();
+
+
+Console.WriteLine("\n\nBubble Sort:");
+Bubblesort.ModifiedAlgorithm(Bubblesort.arr);
+
 
 Console.ReadLine();
