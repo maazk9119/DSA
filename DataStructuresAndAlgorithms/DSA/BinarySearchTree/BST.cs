@@ -57,5 +57,36 @@ namespace DSA.BinarySearchTree
             return node;
         }
 
+
+        public void PrintLevelWise()
+        {
+            BFS(root);
+        }
+
+        private void BFS(Node root)
+        {
+            Queue<Node> queue = new Queue<Node>();
+            Stack<Node> stack = new Stack<Node>();
+
+            queue.Enqueue(root);
+
+            while(queue.Count > 0)
+            {
+                Node node = queue.Dequeue();
+                
+                if(node != null)
+                {
+                    stack.Push(node);
+                    queue.Enqueue(node.right);
+                    queue.Enqueue(node.left);
+                }
+            }
+
+            while(stack.Count > 0)
+            {
+                Console.Write(stack.Pop().data+" ");
+            }
+        }
+
     }
 }
