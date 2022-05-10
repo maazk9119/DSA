@@ -8,7 +8,7 @@ namespace DSA.SortingAlgos
 {
     internal class Bubblesort
     {
-        public static int[] arr = { 4, 3, 2, 7, 5, 1 };
+        public static int[] arr = { 1, 2, 3, 5, 7, 6 };
 
         public static void BasicAlgorithm(int[] arr)
         {
@@ -37,6 +37,8 @@ namespace DSA.SortingAlgos
             Console.WriteLine("Modified Bubble Sort:");
             for (int i = 0; i < arr.Length; i++)
             {
+                bool flag = true;
+
                 for (int j = 0; j < arr.Length - i - 1; j++)
                 {
                     if (arr[j] > arr[j + 1])
@@ -44,7 +46,13 @@ namespace DSA.SortingAlgos
                         int temp = arr[j];
                         arr[j] = arr[j + 1];
                         arr[j + 1] = temp;
+                        flag = false;
                     }
+                }
+
+                if (flag)
+                {
+                    break;
                 }
             }
 
