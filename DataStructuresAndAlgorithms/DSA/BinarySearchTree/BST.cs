@@ -41,11 +41,11 @@ namespace DSA.BinarySearchTree
 
         private Node Add(Node node, int data)
         {
-            if(node == null)
+            if (node == null)
             {
                 return new Node(data);
             }
-            else if(data < node.data)
+            else if (data < node.data)
             {
                 node.left = Add(node.left, data);
             }
@@ -57,6 +57,56 @@ namespace DSA.BinarySearchTree
             return node;
         }
 
+        public void InOrder()
+        {
+            InOrder(root);
+        }
+
+        private void InOrder(Node node)
+        {
+            if(node == null)
+            {
+                return;
+            }
+
+            InOrder(node.left);
+            Console.Write(node.data + " ");
+            InOrder(node.right);
+        }
+
+        public void PreOrder()
+        {
+            PreOrder(root);
+        }
+
+        private void PreOrder(Node node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            Console.Write(node.data + " ");
+            PreOrder(node.left);
+            PreOrder(node.right);
+        }
+
+        public void PostOrder()
+        {
+            PostOrder(root);
+        }
+
+        private void PostOrder(Node node)
+        {
+            if(node == null)
+            {
+                return ;
+            }
+
+            PostOrder(node.left);
+            PostOrder(node.right);
+            Console.Write(node.data + " ");
+        }
 
         public void PrintLevelWise()
         {
@@ -87,6 +137,8 @@ namespace DSA.BinarySearchTree
                 Console.Write(stack.Pop().data+" ");
             }
         }
+
+
 
     }
 }
