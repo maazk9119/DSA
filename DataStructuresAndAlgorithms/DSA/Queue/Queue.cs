@@ -30,18 +30,18 @@ namespace DSA.Queue
             }
             else
             {
-                throw new Exception("Sorry! Queue is Full.");
+                Console.WriteLine("Sorry! Queue is Full.");
             }
         }
 
-        public object Dequeue()
+        public object? Dequeue()
         {
             if(!IsEmpty())
             {
                 rear--;
                 var element = queue[front];
                 
-                for(int i = 0; i < rear - 1; i++)
+                for(int i = 0; i < rear; i++)
                 {
                     queue[i] = queue[i + 1];
                 }
@@ -50,11 +50,18 @@ namespace DSA.Queue
             }
             else
             {
-                throw new Exception("Sorry! Queue is Empty.");
+                Console.WriteLine("Sorry! Queue is Empty.");
+
+                return null;
             }
         }
 
-        public object Front()
+        public int Count()
+        {
+            return rear;
+        }
+
+        public object? Front()
         {
             if(!IsEmpty())
             {
@@ -62,7 +69,9 @@ namespace DSA.Queue
             }
             else
             {
-                throw new Exception("Sorry! Queue is Empty.");
+                Console.WriteLine("Sorry! Queue is Empty.");
+
+                return null;
             }
         }
 
