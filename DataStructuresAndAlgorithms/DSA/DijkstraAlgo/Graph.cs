@@ -81,6 +81,7 @@ namespace DSA.DijkstraAlgo
     {
         private int[,] adjMatrix;
         private int vertices;
+        private const int NOPARENT = -1;
 
         public Graph(int vertice)
         {
@@ -112,11 +113,32 @@ namespace DSA.DijkstraAlgo
         }
 
 
-        public void DijkstraSingleSourceShortestPath(int source)
+        public void PrintShortestPath(int goalNode, int[] predecessor)
+        {
+            List<int> path = new List<int>();
+            path.Add(goalNode);
+            int parent = predecessor[goalNode];
+
+            while (parent != NOPARENT)
+            {
+                path.Add(parent);
+                parent = predecessor[parent];
+            }
+
+            path.Reverse();
+            foreach (var i in path)
+            {
+                Console.Write(" " + i);
+            }
+        }
+
+        public void DijkstraSingleSourceShortestPath(int source, int destination)
         {
             PriorityQueue pq = new PriorityQueue();
             Vertice[] distanceVector = new Vertice[vertices];
+            int[] predecessor = new int[vertices];
 
+            //initializing
             for (int i = 0; i < vertices; i++)
             {
                 distanceVector[i] = new Vertice(i, int.MaxValue);
@@ -124,11 +146,14 @@ namespace DSA.DijkstraAlgo
 
             distanceVector[source].distance = 0;
             distanceVector[source]._visited = true;
+            predecessor[source] = NOPARENT; 
 
+            //adding to priority queueu
             for (int i = 0; i < vertices; i++)
             {
                 pq.Enqueue(distanceVector[i]);
             }
+
 
             while (!pq.IsEmpty())
             {
@@ -139,15 +164,14 @@ namespace DSA.DijkstraAlgo
                 {
                     if (distanceVector[n].distance > v.distance + adjMatrix[v.id, n])
                     {
+                        predecessor[n] = v.id;
                         distanceVector[n].distance = v.distance + adjMatrix[v.id, n];
                     }
                 }
             }
 
-            foreach (var i in distanceVector)
-            {
-                Console.WriteLine("{0}->{1}", i.id, i.distance);
-            }
+
+            PrintShortestPath(destination, predecessor);
         }
 
     }
