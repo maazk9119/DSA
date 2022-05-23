@@ -57,6 +57,36 @@ namespace DSA.BinarySearchTree
             return node;
         }
 
+        public Node Find(int data)
+        {
+            Node n = this.Find(root, data);
+            return n;
+        }
+        private Node Find(Node node, int data)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+            else
+            {
+                if(data == node.data)
+                {
+                    return node;
+                }
+                else if(data > node.data)
+                {
+                    node = Find(node.right, data);
+                }
+                else
+                {
+                    node = Find(node.left, data);
+                }     
+            }
+
+            return node;
+        }
+
         public void InOrder()
         {
             InOrder(root);
