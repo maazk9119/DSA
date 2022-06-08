@@ -123,13 +123,13 @@ namespace DSA.PrimsAlgo
 
         private void printMst(Vertice[] v, int s)
         {
-            Console.WriteLine("ID     Key    Pi\n=================");
+            Console.WriteLine("Pi     ID    Key/Weight\n=================");
             Console.WriteLine("{0}      {1}      {2}", s, 0, null);
             for (int i=0; i<v.Length;i++)
             {
                 if(v[i].pi != null)
                 {
-                    Console.WriteLine(v[i].id + "      " + v[i].key + "      " + v[i].pi.id);
+                    Console.WriteLine(v[i].pi.id + "      " + v[i].id + "      " + v[i].key);
                 }
             }
         }
