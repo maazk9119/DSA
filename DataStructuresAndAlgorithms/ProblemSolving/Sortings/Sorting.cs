@@ -6,19 +6,34 @@ using System.Threading.Tasks;
 
 namespace ProblemSolving.Sortings
 {
-    internal class Sorting
+    internal sealed class Sorting
     {
+        /// <summary>
+        ///     Main 
+        /// </summary>
         internal static void Main()
         {
-
+            Sorting sorting = new Sorting();
+            Console.WriteLine(sorting.SortSentence());
         }
 
         /// <summary>
         /// Problem Statement: 
-        /// Given an array nums of size n, return the majority element.
-        /// The majority element is the element that appears more than ⌊n / 2⌋ times.
-        /// You may assume that the majority element always exists in the array.
-        /// Follow-up: Could you solve the problem in linear time and in O(1) space?
+        ///     Given an array nums of size n, return the majority element.
+        ///     The majority element is the element that appears more than ⌊n / 2⌋ times.
+        ///     You may assume that the majority element always exists in the array.
+        /// Input: 
+        ///     nums = [3,2,3]
+        /// Output: 
+        ///     3
+        ///Constraints:
+        ///     n == nums.length
+        ///     1 <= n <= 5 * 10^4
+        ///     -10^9 <= nums[i] <= 10^9
+        /// 
+        /// 
+        /// Follow-up: 
+        ///     Could you solve the problem in linear time and in O(1) space?
         /// </summary>
         /// <returns></returns>
         internal int MajorityElements(int[] nums)
@@ -53,6 +68,68 @@ namespace ProblemSolving.Sortings
             }
 
             return nums[maxIndex];
+        }
+
+
+
+        /// <summary>
+        /// Problem Statement: 
+        ///     A sentence is a list of words that are separated by a single space with no leading or trailing spaces. 
+        ///     Each word consists of lowercase and uppercase English letters.
+        ///     A sentence can be shuffled by appending the 1-indexed word position to each word then rearranging the words in the sentence.
+        /// Input: 
+        ///     s = "is2 sentence4 This1 a3"
+        /// Output: 
+        ///     "This is a sentence"
+        /// Explanation: 
+        ///     Sort the words in s to their original positions 
+        ///     "This1 is2 a3 sentence4", then remove the numbers.
+        /// Constraints:
+        ///     2 <= s.length <= 200
+        ///     s consists of lowercase and uppercase English letters, spaces, and digits from 1 to 9.
+        ///     The number of words in s is between 1 and 9.
+        ///     The words in s are separated by a single space.
+        ///     s contains no leading or trailing spaces.
+        /// </summary>
+        internal string SortSentence(string s = "is2 sentence4 This1 a3") //default param as input
+        {
+            string result = "";
+            string delimitor = " ";
+            var    arrange   = new Dictionary<int, string>();
+            
+            string[] words = s.Split(delimitor);
+
+            foreach(string word in words)
+            {
+                int tempLen = word.Length;
+                
+                //get number from string
+                int tempValue    = (int)char.GetNumericValue(Convert.ToChar(word.Substring(tempLen-1)));
+;               //get string without number
+                string tempWord  = word.Substring(0, tempLen-1);
+               
+                arrange.Add(tempValue, tempWord);
+            }
+
+            //sort arrange to arr
+            var arr = from x in arrange
+                        orderby x.Key ascending
+                            select x;
+
+            //save into result
+            foreach(var word in arr)
+            {
+                if(result == "")
+                {
+                    result = word.Value;
+                }
+                else
+                {
+                    result += " " + word.Value;
+                }
+            }
+
+            return result;
         }
     }
 
